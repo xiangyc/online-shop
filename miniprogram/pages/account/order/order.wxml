@@ -1,0 +1,42 @@
+<wxs module="filters" src="../../../utils/timeUtil.wxs"></wxs>
+<van-tabs swipeable active="{{ active }}" bind:change="onChange">
+  <van-tab title="全部"></van-tab>
+  <van-tab title="待发货"></van-tab>
+  <van-tab title="待收货"></van-tab>
+  <van-tab title="待评价"></van-tab>
+  <van-tab title="已完成"></van-tab>
+</van-tabs>
+<view class='product'>
+  <view class='pro-list' wx:for="{{orderArray}}" wx:key="{{index}}">
+    <view class='pro-time'>
+      <text>{{filters.dateFormat(item.createTime)}}</text>
+      <text class='pro-style'>{{item.orderStatusName}}</text>
+    </view>
+    <view class='list-con' bindtap="toDetail" data-id="{{item.id}}">
+      <view class='list-con-img'>
+        <image src='{{domain }}{{item.orderDetails[0].shopProduct.imgurl}}'></image>
+      </view>
+      <view class='list-con-con'>
+        <view class='list-con-title'>{{item.orderDetails[0].shopProduct.name}}</view>
+        <view class='list-con-text'>材料：{{item.orderDetails[0].shopProduct.material}} 尺寸：{{item.orderDetails[0].shopProduct.size}} 重量：{{item.orderDetails[0].shopProduct.weight/1000}}克</view>
+        <view class='list-con-num'>
+          <view class='list-con-price'>
+            <text class='sale-rice'>￥{{filters.toFix(item.totalPrice)}}</text>
+          </view>
+          <view class='list-con-step'>x {{item.orderDetails[0].amount}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='pro-num'></view>
+    <view class='pro-btn'>
+      <view slot="footer">
+        <van-button plain size="small" bind:click="goGoodsDetail" data-id="{{item.orderDetails[0].shopProduct.id }}">再次购买</van-button>
+        <van-button wx:if="{{item.orderStatus === 0 }}" plain round size="small" type="primary" bindtap='toPay' data-id="{{item.id }}" data-price="{{item.totalPrice }}">立即支付</van-button>
+      </view>
+    </view>
+  </view>
+</view>
+<import src="../../../template/passwordPanel.wxml"/>
+<van-action-sheet show="{{payShow }}" bind:close="closePay" title="请选择支付方式">
+  <template is="passwordPanel" data="{{paymoney: paymoney, balance: balance, passwordHidden: passwordHidden}}"/>
+</van-action-sheet>

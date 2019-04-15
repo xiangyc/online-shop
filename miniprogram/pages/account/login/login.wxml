@@ -1,0 +1,33 @@
+<van-cell-group>
+  <van-field
+    value="{{ username }}"
+    clearable
+    label="用户名"
+    placeholder="请输入用户名"
+    maxlength="20"
+    bind:click-icon="onClickIcon"
+    bind:input="usernameInput"
+  />
+
+  <van-field
+    maxlength="10"
+    value="{{ password }}"
+    type="password"
+    icon="closed-eye"
+    password="true"
+    label="密码"
+    placeholder="请输入密码"
+    bind:input="passwordInput"
+  />
+</van-cell-group>
+<view class=''></view>
+<view class='login-btn'>
+  <view class="mb10">
+    <van-button round size="large" type="primary" bind:click="login">登录</van-button>
+  </view>
+  <van-button round size="large" plain type="danger" bind:click="register">注册</van-button>
+</view>
+<view class='wechat-login' bind:click="wxlogin">
+  <text>第三方账号登录</text>
+  <image src='../../../images/my00.png'></image>
+</view>

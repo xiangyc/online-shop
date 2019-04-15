@@ -1,0 +1,36 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.pro-material{background:#fff;}
+.pro-material > view{padding:0 15px;border-bottom:1px solid #e8e8e8;font-size:15px;height:50px;line-height:50px;}
+.pro-material > view:last-child{border-bottom:0;}
+.pro-popup-info{border-bottom:1px solid #e8e8e8;padding:11px 15px;overflow:hidden;}
+.pro-popup-info-img{width:80px;height:80px;float:left;background:#eee;}
+.pro-popup-info-img image{width:80px;}
+.pro-popup-info-text{padding-left:10px;font-size:14px;color:#2d2d2d;float:left;}
+.pro-popup-info-text-title{padding-bottom:2px;}
+.pro-popup-info-text-stock{vertical-align: bottom;color:#999;font-size:12px;padding-top:25px;}
+
+.pro-material .van-stepper{float:right;height:30px;line-height:30px;margin-top:10px;}
+.pro-popup-material > view > text{padding:0 16px;border:1px solid #ffb11b;color:#ffb11b;border-radius:12px;}
+.van-goods-action{padding-bottom:0!important;}
+.van-button--danger{background:#ffb11b!important;border:1px solid #ffb11b!important;}

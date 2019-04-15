@@ -1,0 +1,10 @@
+/* pages/shopmall/search/search.wxss */
+page{font-family: 'PingFang SC';background:#fff;}
+image{width:100%;}
+view{overflow: hidden;}
+.search-history{overflow:hidden;padding:0 15px;margin:20px 0 10px;}
+.search-history-title{float:left;font-size:14px;}
+.search-delete{float:right;font-size:18px;}
+
+.search-tag{padding:0 15px;}
+.search-tag .van-tag{margin-right:10px;padding:0 10px;height:20px;line-height:20px;border-radius:10px;border:0;color:#2d2d2d;}

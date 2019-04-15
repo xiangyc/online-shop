@@ -1,0 +1,5 @@
+/* pages/shopcart/shopcart.wxss */
+.list-con{padding-left:40px;}
+.list-con-text{height:32px;}
+.list-con-num{height:30px;line-height:30px;}
+

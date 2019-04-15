@@ -1,0 +1,31 @@
+<view class='list-norecode {{noDataShow?"show":"hide"}}'> 
+  <image mode='widthFix' src='https://app.jsz.top/image/member/noaddress-receipt.png'></image> 
+  <van-button plain size='normal' type="primary" bind:tap="addAdress">新增地址</van-button> 
+</view> 
+ 
+<view class='list {{manageDataShow?"show":"hide"}}'> 
+  <van-panel use-footer-slot  wx:for="{{adressList}}" wx:key="idx" bindtap="chooseAddress"> 
+    <view class='list-con'> 
+      <view class='list-user'> 
+        <text class='list-name'>{{item.consignee}}</text> 
+        <text class='list-mobile'>{{item.hideMobile}}</text> 
+      </view> 
+      <view class='list-address'>{{item.addressDetail}}</view> 
+    </view> 
+ 
+    <view slot="footer" class="list-manage"> 
+      <van-checkbox class='list-checkbox' value="{{item.isDefault == 1?true:false}}" id="{{index}}" data-id="{{item.id}}" checked-color="#ffb11b" custom-class="demo-checkbox" catchtap="onChange"> 
+        <text class='list-tag-manage'>设为默认</text> 
+      </van-checkbox> 
+      <view class='list-delete' bind:tap="delAdress" data-id="{{item.id}}"><van-icon name="delete" />删除</view> 
+    </view> 
+  </van-panel> 
+</view> 
+
+
+<view class='new-address-btn'> 
+  <van-button size='large' round type="primary" bind:tap="addAdress">新增</van-button> 
+</view>
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

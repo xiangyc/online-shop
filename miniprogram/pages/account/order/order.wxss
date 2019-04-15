@@ -1,0 +1,2 @@
+/* pages/account/order/order.wxss */
+.list-con-text{white-space: normal;line-height:1.5;}

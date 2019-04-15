@@ -1,0 +1,87 @@
+<view class="container">
+  <!--顶部头像-->
+  <view class="top">
+    <navigator url="../login/login" hover-class="navigator-hover" class="photo">
+      <image src="../../../images/my00.png"></image>
+    </navigator>
+    <view class="phone_num">{{mobile}}</view>
+  </view>
+  <view class='order-quick'>
+    <view class='order-list'>
+      <view class='order-list-con'>
+        <text class='user-number'>{{useBalance}}</text>
+        余额
+      </view>
+      <view class='order-list-con'>
+        <text class='user-number'>0</text>
+        积分
+      </view>
+      <view class='order-list-con'>
+        <text class='user-number'>0</text>
+        卡
+      </view>
+      <view class='order-list-con'>
+        <text class='user-number'>0</text>
+        优惠券
+      </view>
+    </view>
+  </view>
+  <view class='order-quick'>
+    <view class='order-title'>
+      <text>全部订单</text>
+      <text class='order-check' bindtap="toOrder" data-id="0" data-active="0">查看全部订单</text>
+    </view>
+    <view class='order-list'>
+      <view class='order-list-con' bind:tap="toOrder" data-id="5" data-active="4">
+        <van-icon class='order-icon' name="card" />
+        已完成
+      </view>
+      <view class='order-list-con' bindtap="toOrder" data-id="1" data-active="1">
+        <van-icon class='order-icon' name="send-gift" />
+        待发货
+      </view>
+      <view class='order-list-con' bindtap="toOrder" data-id="4" data-active="2">
+        <van-icon class='order-icon' name="gift" />
+        待收货
+      </view>
+      <view class='order-list-con' bindtap="toOrder" data-id="2" data-active="3">
+        <van-icon class='order-icon' name="comment" />
+        待评价
+      </view>
+    </view>
+  </view>
+  <!--/顶部头像end-->
+<!--个人中心列表项-->
+<view class="item_list">
+    <!-- <view bindtap="toOrder" class="item_list_msg">
+        <view class="list_icon"><image src="../../../images/my01.png"></image></view>
+        <text>我的订单</text>
+    </view> -->
+    <view class="line_x"></view>
+    <view bindtap="toAddress" class="item_list_msg">
+        <view class="list_icon"><image src="../../../images/my06.png"></image></view>
+        <text>收货地址</text>
+    </view>
+    <view class="line_x" hidden='true'></view>
+    <view bindtap="toclllectProduct" class="item_list_msg" hidden='true'>
+        <view class="list_icon"><image src="../../../images/my03.png"></image></view>
+        <text>收藏的商品</text>
+    </view>
+    <view class="line_x"></view>
+    <view bindtap="toSet" class="item_list_msg">
+        <view class="list_icon"><image src="../../../images/my04.png"></image></view>
+        <text>系统设置</text>
+    </view>
+    <view class="line_x"></view>
+    <view bindtap="toPay" class="item_list_msg" hidden='true'>
+        <view class="list_icon"><image src="../../../images/my05.png"></image></view>
+        <text>购买测试</text>
+    </view>
+</view>
+<!--/个人中心列表项end-->
+</view>  <!--/contner  end-->
+
+<import src="../../../template/passwordPanel.wxml"/>
+<van-action-sheet show="{{payShow }}" bind:close="closePay" title="请选择支付方式">
+  <template is="passwordPanel" data="{{paymoney: 100, balance: 200, passwordHidden: passwordHidden}}"/>
+</van-action-sheet>

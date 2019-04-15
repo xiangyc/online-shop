@@ -1,0 +1,34 @@
+/**分类栏**/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.classify{
+  margin-top:0rpx;
+}
+.left-navbar{
+  position:absolute;
+  left:0;
+  width:25%;
+  height:100%;
+  background-color:#eee;
+  font-size:15px;
+}
+.left-navbar view{
+  text-align:center;
+}
+.active{
+  background-color:#FFF;
+  color:red;
+  font-size:17px;
+}
+#right{
+  position:absolute;
+  right:0;
+  top:44px;
+}
+.pro-classify-list{padding:15px 15px 0;overflow:hidden;text-align:center;font-size:14px;}
+.goods .van-col{padding-bottom:10px;}
+image{width:100%;}
+.pro-classify-list text{display:block;text-overflow: ellipsis;width:100%;overflow:hidden;white-space: nowrap;}

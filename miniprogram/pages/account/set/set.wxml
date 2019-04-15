@@ -1,0 +1,10 @@
+<van-cell-group>
+  <van-field
+    value="SZ00001"
+    label="用户名推荐码"
+    left-icon="contact"
+    disabled
+    border="{{ false }}"
+  />
+</van-cell-group>
+<van-button size="large" type="danger" bind:click="logout">退出账号</van-button>

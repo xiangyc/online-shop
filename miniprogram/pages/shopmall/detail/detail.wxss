@@ -1,0 +1,45 @@
+/* pages/shopmall/detail/detail.wxss */
+@import "../../../wxParse/wxParse.wxss";
+page{font-family: 'PingFang SC';background:#f8f8f8;}
+scroll-view{padding-bottom:50px;}
+image{width:100%;}
+view{overflow: hidden;}
+.pro-text{padding:15px;background:#fff;}
+.pro-text-title{display:block;font-size:18px;color:#2d2d2d;font-weight:bold;line-height:32px;}
+.pro-text-con{font-size:14px;color:#666;line-height:18px;}
+.pro-info{overflow:hidden;font-size:24px;padding-top:10px;height:44px;line-height:44px;}
+.pro-price{float:left;color:#ff3b30;font-weight:bold;}
+.pro-stock{float:right;font-size:14px;color:#fea700;}
+.pro-qualification{background:#f8f6f2;padding:10px;height:14px;}
+.pro-qualification view{float:left;height:14px;line-height:14px;font-size:14px;padding-left:20px;}
+.pro-qualification view:first-child{padding-left:0;}
+.pro-qualification image{width:14px;vertical-align: middle;margin-right:5px;}
+.pro-material{background:#fff;margin-top:10px;}
+.pro-material > view{padding:0 15px;border-bottom:1px solid #e8e8e8;font-size:15px;height:50px;line-height:50px;}
+.pro-material > view:last-child{border-bottom:0;}
+.pro-link{margin-top:10px;background:#fff;padding:15px;height:40px;}
+.pro-link-icon{float:left;}
+.pro-link-icon image{width:40px;display:block;}
+.pro-link-text{float:left;line-height:1;text-align:left;padding-left:20px;}
+.pro-link-text-title{color:#2d2d2d;font-size:16px;font-weight:bold;padding-top:1px;}
+.pro-link-text-con{font-size: 12px;color: #666;padding-top: 10px;display: block;}
+.pro-link-arrow{float:right;height:18px;padding:11px 0;line-height:1;}
+.van-icon{color:#cecece;}
+.pro-detail{background:#fff;margin:10px 0;}
+.pro-detail-title{background:url(https://app.jsz.top/image/goldShop/shopDetail-con-title-bg.jpg) center no-repeat;background-size:100%;font-size: 15px;padding: 25px 0;margin: 0 15px;text-align: center;color: #2d2d2d;}
+.pro-detail-text-list{padding:0 15px;}
+.pro-detail-text-list-title{font-size: 15px;position: relative;padding: 0 0 0 8px;margin-bottom: 15px;line-height:15px;}
+.pro-detail-text-list-title::before{width: 3px;position: absolute;top: 0;left: 0;height: 15px;content: '';background-color: #ffb11b;}
+.pro-detail-text-list-con{line-height: 20px;font-size:14px;padding-bottom: 15px;}
+
+.pro-popup-info{border-bottom:1px solid #e8e8e8;padding:11px 15px;}
+.pro-popup-info-img{width:80px;height:80px;float:left;background:#eee;}
+.pro-popup-info-img image{width:80px;}
+.pro-popup-info-text{padding-left:10px;font-size:14px;color:#2d2d2d;}
+.pro-popup-info-text-title{padding-bottom:2px;}
+.pro-popup-info-text-stock{vertical-align: bottom;color:#999;font-size:12px;padding-top:25px;}
+
+.pro-material .van-stepper{float:right;height:30px;line-height:30px;margin-top:10px;}
+.pro-popup-material > view > text{padding:0 16px;border:1px solid #ffb11b;color:#ffb11b;border-radius:12px;}
+.van-goods-action{padding-bottom:0!important;}
+.van-button--danger{background:#ffb11b!important;border:1px solid #ffb11b!important;}

@@ -1,0 +1,77 @@
+page{background:#f8f8f8;}
+
+.top{
+    text-align: center;
+    background: #f8f8f8;
+    max-width: 768px;
+    width: 100%;
+    margin: 0 auto;
+    color: #2d2d2d;
+    padding: 30px 0;
+    font-size:16px;
+}
+.photo{
+    width: 60px;
+    height:60px;
+    margin: 0 auto 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.photo image{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+/*项目列表*/
+.item_list{
+    background-color: white;
+    font-size: 28rpx;
+    width: 94%;
+}
+.item_list_msg{
+    background-color: white;
+    position: relative;
+    padding: 30rpx;
+    width: 100%;
+}
+.list_icon{
+    float: left;
+    width: 23px;
+    height: 23px;
+    margin-right: 15rpx;
+    background-repeat: no-repeat;
+}
+.list_icon image{
+    width: 100%;
+    height: 100%;
+}
+.item_list_msg::after{
+    content: ' ';
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: #999999 solid;
+    border-width: 1px 0 0 1px;
+    width: 8px;
+    height: 8px;
+    -webkit-transform: rotate(135deg);
+}
+.line_x{
+    width: 100%;
+    height: 2rpx;
+    background-color: #f3f3f3;
+    margin-left:38px;
+}
+
+.order-quick{width:100%;margin:0 0 10px;display:block;background:#fff;color:#2d2d2d;}
+.order-title{padding:10px 20px 10px 10px;position:relative;overflow:hidden;height:30px;line-height:30px;}
+.order-title::before{content: ' ';position: absolute;right: 10px;top: 20px;border: #999999 solid;border-width: 1px 0 0 1px;width: 8px;height: 8px;-webkit-transform: rotate(135deg);}
+.order-title::after{content:'';height:1px;position:absolute;width:100%;background:#e8e8e8;bottom:0;left:0;}
+.order-check{float:right;font-size:12px;color:#999;}
+.order-list{overflow:hidden;padding:10px;}
+.order-list-con{width:25%;float:left;text-align:center;}
+.order-icon{color:#ffb11b;font-size:24px;display:block;line-height:24px;}
+.user-number{color:#ffb11b;font-size:18px;display:block;line-height:24px;}

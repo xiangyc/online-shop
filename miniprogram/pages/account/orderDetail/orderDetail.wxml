@@ -1,0 +1,133 @@
+<!--pages/account/orderDetail/orderDetail.wxml-->
+<view class='order-detail'>
+  <view class='order-state'>
+    <view class='order-state-title'>
+      <text class='order-state-icon payment' wx:if="{{orderCon.orderStatus == 0}}">{{orderStatusName}}</text>
+      <text class='order-state-icon delivery' wx:elif="{{orderCon.orderStatus == 1}}">{{orderStatusName}}</text>
+      <text class='order-state-icon cancel' wx:elif="{{orderCon.orderStatus == 3}}">{{orderStatusName}}</text>
+      <text class='order-state-icon delivery' wx:elif="{{orderCon.orderStatus == 4}}">{{orderStatusName}}</text>
+      <text class='order-state-icon received' wx:else>{{orderStatusName}}</text>
+      <text class="order-state-time {{timeShow?'show':'hide'}}">{{time}}</text>
+    </view>
+    <view class='order-state-con'>
+      <view class='list-left'>{{orderStatusText}}</view>
+      <view class='list-right order-state-arrow' class="{{arrowShow?'show':'hide'}}">
+        <van-icon class="icon-arrow" name="arrow" /> 
+      </view>
+      </view>
+  </view>
+  <view class='order-pro'>
+    <view class='order-pro-info'> 
+      <view class='order-pro-img'>
+        <image mode='widthFix' src="{{domain + '/' + orderCon.orderDetails[0].shopProduct.imgurl}}"></image>
+      </view>
+      <view class='order-pro-text'>
+        <view class='order-pro-text-info'>
+          <view class='order-pro-text-title list-left'>{{orderDetails.shopProduct.name}}</view>
+        </view>
+        <view class='order-pro-text-material'>
+          <view class='order-pro-text-material-info list-left'>
+            <text>材料:{{orderDetails.shopProduct.material}}</text>
+            <text>规格:{{orderDetails.shopProduct.size}}</text>
+            <text>克重:{{orderDetails.shopProduct.weight/1000}}克</text>
+          </view>
+        </view>
+        <view class='order-pro-num'>
+          <view class='order-pro-text-num list-left'>数量:{{orderDetails.amount}}</view>
+          <view class='order-pro-text-price list-right'>价格:{{orderDetails.price}}元</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='order-pro-btn'>
+      <text class='order-pro-btn-service' bindtap='contactService'>联系客服</text>
+    </view> -->
+  </view>
+  <view class='order-info'>
+    <view class='order-info-list order-info-address'>
+      <view class='list-left'>收货地址</view>
+      <view class='list-right'>
+        <view class='order-info-address-user'>
+          <text class='order-info-address-name'>{{orderCon.deliveryAddress.consignee}}</text>
+          <text class='order-info-address-mobile'>{{orderCon.deliveryAddress.hideMobile}}</text>
+        </view>
+        <text class='order-info-address-con'>{{orderCon.deliveryAddress.region.province.name}}省{{orderCon.deliveryAddress.region.regionName}}市{{orderCon.deliveryAddress.addressDetail}}</text>
+      </view>
+    </view>
+    <view class='order-info-list'>
+      <view class='list-left'>配送方式</view>
+      <view class='list-right'>顺丰快递</view>
+    </view>
+    <view class='order-info-list'>
+      <view class='list-left'>商品总价</view>
+      <view class='list-right'>￥{{totalPrice}}</view>
+    </view>
+    <view class='order-info-list'>
+      <view class='list-left'>运费</view>
+      <view class='list-right'>{{freightMoney}}</view>
+    </view>
+    <view class='order-info-list'>
+      <view class='list-left'>保价费</view>
+      <view class='list-right'>{{premiumMoney}}</view>
+    </view>
+    <view class='order-info-list order-info-price'>
+      支付金额：<text class='text-red'>￥{{lastPrice}}</text>
+    </view>
+  </view>
+  <view class='order-other'>
+    <view class='order-other-list'>
+      <view class='order-other-list-left'>订单编号：</view>
+      <view class='order-other-list-right'>
+        <text>{{orderCon.no}}</text>
+        <text data-text="{{orderCon.no}}" class='order-other-copy' bindtap='copyText'>复制</text>
+      </view>
+    </view>
+    <view class='order-other-list'>
+      <view class='order-other-list-left'>创建时间：</view>
+      <view class='order-other-list-right'>{{createTime}}</view>
+    </view>
+    <view class='order-other-list'>
+      <view class='order-other-list-left'>支付方式：</view>
+      <view class='order-other-list-right'>账户余额</view>
+    </view>
+    <view class='order-other-list'>
+      <view class='order-other-list-left'>支付时间：</view>
+      <view class='order-other-list-right'>--</view>
+    </view>
+    <view class='order-other-list'>
+      <view class='order-other-list-left'>发票类型：</view>
+      <view class='order-other-list-right'>暂不需要</view>
+    </view>
+  </view>
+  <view class='order-btn'>
+    <view>
+      <van-button plain round size='normal' class="{{cannelShow?'show':'hide'}}" bindtap='cancelOrder'>取消订单</van-button>
+    </view>
+    <view>
+      <van-button plain round size='normal' type='primary' wx:if="{{orderCon.orderStatus == 0}}" bindtap='toPay'>去支付</van-button>
+      <van-button plain round size='normal' type='primary' wx:elif="{{orderCon.orderStatus == 1}}"class='hide'>确认收货</van-button>
+      <van-button plain round size='normal' type='primary' wx:elif="{{orderCon.orderStatus == 2}}" bindtap='repeatBuy'>再次购买</van-button>
+      <van-button plain round size='normal' type='primary' wx:elif="{{orderCon.orderStatus == 3}}" bindtap='repeatBuy'>再次购买</van-button>
+      <van-button plain round size='normal' type='primary' wx:elif="{{orderCon.orderStatus == 4}}" bindtap='delivery'>确认收货</van-button>
+      <van-button plain round size='normal' type='primary' wx:else bindtap='repeatBuy'>再次购买</van-button>
+    </view>
+  </view>
+</view>
+
+<!-- <demo-block title="消息确认" padding>
+  <van-button
+    plain
+    type="primary"
+    bind:click="onClickConfirm"
+  >
+    消息确认
+  </van-button>
+</demo-block> -->
+
+<import src="../../../template/passwordPanel.wxml"/>
+<van-action-sheet class='pay-box' show="{{payShow }}" bind:close="closePay" title="请选择支付方式">
+  <template is="passwordPanel" data="{{paymoney: lastPrice,orderTimeId: orderTimeId, balance: balance, passwordHidden: passwordHidden}}"/>
+</van-action-sheet>
+
+<van-dialog id="van-dialog" />
+
+<van-toast id="van-toast" />

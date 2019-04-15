@@ -1,0 +1,23 @@
+<van-search
+  value="{{value}}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:change="onChange"
+  bind:search="onSearch"
+  maxlength="12"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+
+<view class='search-history {{noDataShow?"show":"hide"}}' bind:click="onClick">
+  <view class='search-history-title'>历史记录</view>
+  <view class='search-delete'>
+    <van-icon name="delete" bindtap='onDelete' />
+  </view>
+</view>
+<view class='search-tag'>
+  <van-tag wx:for="{{historyList}}" wx:key="idx" data-key="{{item}}" bindtap="onSearchRecord">{{item}}</van-tag>
+</view>
+<van-toast id="van-toast" />
+
+<van-dialog id="van-dialog" />

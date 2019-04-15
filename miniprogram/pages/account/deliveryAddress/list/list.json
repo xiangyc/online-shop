@@ -1,0 +1,14 @@
+{ 
+  "usingComponents": { 
+    "van-icon": "../../../vant/icon/index", 
+    "van-panel": "../../../vant/panel/index", 
+    "van-button": "../../../vant/button/index",
+    "van-toast": "../../../vant/toast/index",
+    "van-checkbox": "../../../vant/checkbox/index", 
+    "van-checkbox-group": "../../../vant/checkbox-group/index", 
+    "van-tag": "../../../vant/tag/index",
+    "van-dialog": "../../../vant/dialog/index"
+ 
+  },
+  "navigationBarTitleText": "收货地址"
+}

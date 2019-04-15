@@ -1,0 +1,70 @@
+<wxs module="filters" src="../../utils/timeUtil.wxs"></wxs>
+<van-search
+    value="{{value}}"
+    placeholder="请输入搜索关键词"
+    bind:tap="openSearchWin"
+/>
+
+<swiper
+  indicator-dots="true"
+  autoplay="true"
+  interval="5000"
+  duration="500"
+>
+  <block wx:for="{{bannerArray}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{domain }}{{item.imgurl }}" class="slide-image" style="width:{{imageWidth}}px;" height="150" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class='product'>
+  <view class='pro-list' wx:for="{{productArray}}" wx:key="{{index}}">
+    <view class='list-con' bindtap="goGoodsDetail" data-id="{{item.id}}">
+      <view class='list-con-img'>
+        <image src='https://app.jsz.top/help/2017/3/20170330175416-9178.jpg'></image>
+      </view>
+      <view class='list-con-con'>
+        <view class='list-con-title'>{{item.name}}</view>
+        <view class='list-con-text'>{{item.summary}}</view>
+        <view class='list-con-num'>
+          <view class='list-con-price'>
+            <text class='sale-rice'>￥{{filters.toFix(item.salePrice)}}</text>
+            <text class='market-price'>￥{{filters.toFix(item.marketPrice)}}</text>
+          </view>
+          <view class='list-con-step'>x {{item.amount}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='pro-btn'>
+      <view slot="footer">
+      <van-button size="small" catchtap='applyWin' data-index="{{index}}">加入购物车</van-button>
+      <van-button size="small" bindtap="goGoodsDetail" data-id="{{item.id}}" type="danger">立即购买</van-button>
+      </view>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />
+
+
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  overlay="{{ true }}"
+  bind:close="onClose"
+>
+<view class='pro-popup-info'>
+  <view class='pro-popup-info-img'>
+    <image src='{{domain + goodsData.imgurl}}' style='height:80px;'></image>
+  </view>
+  <view class='pro-popup-info-text'>
+    <view class='pro-popup-info-text-title'>{{goodsData.name}}</view>
+    <view class='pro-popup-info-text-price'>￥{{goodsData.salePrice}}</view>
+    <view class='pro-popup-info-text-stock'>库存（<text>{{goodsData.amount}}</text>件）</view>
+  </view>
+</view>
+  <view class='pro-material pro-popup-material'>
+    <view>数量：<van-stepper value="{{count}}" bind:change="onChangeNum" /></view>
+  </view>
+  <van-button size="large" type="primary" bindtap='numberSure' data-index="{{index}}">确认</van-button>
+  
+</van-popup>

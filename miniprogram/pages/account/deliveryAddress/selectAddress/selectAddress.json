@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-icon": "../../../vant/icon/index",
+    "van-button": "../../../vant/button/index",
+    "van-checkbox": "../../../vant/checkbox/index",
+    "van-checkbox-group": "../../../vant/checkbox-group/index",
+    "van-tag": "../../../vant/tag/index"
+  },
+  "navigationBarTitleText": "选择收货地址"
+}

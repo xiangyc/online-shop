@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-action-sheet": "../../vant/action-sheet/index",
+    "van-icon": "../../vant/icon/index"
+  },
+  "navigationBarTitleText": "我的"
+}

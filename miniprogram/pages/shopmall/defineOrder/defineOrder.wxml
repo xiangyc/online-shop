@@ -1,0 +1,200 @@
+<!--pages/shopmall/defineOrder/defineOrder.wxml--> 
+ 
+<scroll-view> 
+ 
+  <view class="order order-way"> 
+ 
+      <view bindtap="expressType" class="order-list arrow"> 
+ 
+          <text class='list-left'>提金方式</text> 
+ 
+          <text class='list-right'>{{typeName}}</text> 
+ 
+          <van-icon class="icon-arrow" name="arrow" /> 
+ 
+      </view> 
+ 
+      <view bindtap="choiceAdress" class="order-list address-default border-none arrow"> 
+ 
+          <text class='list-left'>收货地址</text> 
+ 
+          <view class='list-right'> 
+ 
+            <view hidden='{{adressData1}}'>请选择收货地址</view>
+
+            <view class='address-con' hidden='{{adressData3}}'>
+              <view class='address-con-info'>
+                <view class="list-left address-con-name">客服电话</view>
+                <view class='address-con-mobile'>4006-832-999</view>
+              </view>
+              <view class='address-con-text'>深圳市罗湖区彭年广场写字楼38层</view>
+            </view> 
+            
+            <view class='address-con' hidden='{{adressData2}}'>
+              <view class='address-con-info'>
+                <view class="list-left address-con-name">{{consignee}}</view>
+                <view class='address-con-mobile'>{{hideMobile}}</view>
+              </view>
+              <view class='address-con-text'>{{addressDetail}}</view>
+            </view> 
+ 
+          </view> 
+ 
+          <van-icon class="icon-arrow" name="arrow" /> 
+ 
+      </view> 
+ 
+  </view> 
+ 
+  <view wx:for="{{detailCon}}" wx:key="idx" class="order order_pro {{item.isSelect? 'show':'hide'}}"> 
+    <view class='order-pro-info'> 
+      <view class='order-pro-img'> 
+        <image mode='widthFix' src="{{domain + item.imgurl}}"></image> 
+      </view> 
+      <view class='order-pro-text'> 
+        <view class='order-pro-text-info'> 
+          <view class='order-pro-text-title list-left'>{{item.name}}</view> 
+          <view class='order-pro-text-price list-right'>￥{{item.salePrice}}</view> 
+        </view> 
+        <view class='order-pro-text-material'> 
+          <view class='order-pro-text-material-info list-left'>{{item.weight/1000}}克 | {{item.material}} | {{item.size}}</view> 
+          <view class='order-pro-text-num list-right'>x{{item.count}}</view> 
+        </view> 
+        <view class='order-pro-text-tips'>不支持退换货</view> 
+      </view> 
+    </view>
+  </view>
+ 
+  <view class="order order_info">
+    <view class="order-list"> 
+ 
+        <text class='list-left'>配送方式</text> 
+ 
+        <text class='list-right'>顺丰快递</text> 
+ 
+    </view> 
+ 
+    <view bindtap="showInvoice" class="order-list arrow"> 
+ 
+        <text class='list-left'>发票</text> 
+ 
+        <text class='list-right'>{{ticketText}}</text> 
+ 
+        <van-icon class="icon-arrow" name="arrow" /> 
+ 
+    </view> 
+ 
+      <view class="order-list"> 
+ 
+          <text class='list-left'>商品金额</text> 
+ 
+          <text class='list-right' bind:change='loadPrice'>￥{{detailPrice}}</text> 
+ 
+      </view> 
+ 
+      <view class="order-list"> 
+ 
+          <text class='list-left'>运费</text> 
+ 
+          <text class='list-right'bind:change='loadPrice'>{{freightMoney}}</text> 
+ 
+      </view> 
+ 
+      <view class="order-list border-none"> 
+ 
+          <text class='list-left'>保价费</text> 
+ 
+          <text class='list-right'bind:change='loadPrice'>{{premiumMoney}}</text> 
+ 
+      </view> 
+ 
+  </view> 
+ 
+</scroll-view> 
+ 
+<van-submit-bar class="submit-order" price="{{lastPrice}}" button-text="提交订单" bind:submit="confirmOrderBefore" /> 
+ 
+<van-popup 
+ 
+  show="{{ show }}" 
+ 
+  position="bottom" 
+ 
+  overlay="{{ true }}" 
+ 
+  bind:close="onClose" 
+ 
+  class="popup-box"  
+ 
+> 
+ 
+  <view class="popup-express"> 
+ 
+      <view class="order-list" bindtap='choiceType' data-id='{{0}}'>快递</view> 
+ 
+      <view class="order-list border-none" bindtap="choiceType" data-id='{{1}}'>自提</view> 
+ 
+      <van-button size="large" type="default" bindtap='onClose'>取消</van-button> 
+ 
+  </view> 
+ 
+</van-popup>
+
+<van-popup 
+ 
+  show="{{ isShow }}" 
+ 
+  position="bottom" 
+ 
+  overlay="{{ true }}" 
+ 
+  bind:close="onCloseInvoice" 
+ 
+  class="popup-box"  
+ 
+> 
+ 
+  <view class="popup-invoice"> 
+    <view class='popup-invoice-title'>
+      <text>发票</text>
+      <view class='popup-invoice-close'>
+        <van-icon name="cross" bindtap='onCloseInvoice' />
+      </view>
+    </view>
+    <view class='popup-invoice-con'>
+      <view class='popup-invoice-list'>
+        <view class='list-left'>开具发票</view>
+        <view class='list-right'>
+          <van-switch size="20px" checked="{{ checked }}" active-color="#ffb11b" inactive-color="#fff" bind:change="onChange" />
+        </view>
+      </view>
+      <view class='popup-invoice-list'>
+        <view class='list-left'>发票类型</view>
+        <view class='list-right'>普通发票</view>
+      </view>
+      <view class='popup-invoice-list' disabled="{{disabled}}">
+        <view class='list-left'>发票抬头</view>
+        <view class='list-left popup-invoice-header {{personFlag?"":"active"}}' bindtap='{{onChangeTab}}' data-type="1">个人</view>
+        <view class='list-left popup-invoice-header {{companyFlag?"":"active"}}' bindtap='{{onChangeTab}}' data-type="2">公司</view>
+      </view>
+      <view class='popup-invoice-input-person {{checked?"":"disabled"}}' hidden='{{personFlag}}'>
+        <van-field class="popup-invoice-input" value="{{ personValue }}" placeholder="个人" border="{{ false }}" bind:change="onChangePerson" disabled="{{disabled}}" />
+      </view>
+      <view class='popup-invoice-input-company {{checked?"":"disabled"}}' hidden='{{companyFlag}}'>
+        <van-field class="popup-invoice-input" value="{{ companyValue }}" placeholder="请填写单位名称" border="{{ false }}" disabled="{{disabled}}" bind:change="onChangeCompany" />
+        <van-field class="popup-invoice-input" value="{{ onValue }}" placeholder="请填写纳税人识别号" border="{{ false }}" bind:change="onChangeNo" disabled="{{disabled}}" />
+      </view>
+    </view>
+    <view class='popup-invoice-btn'>
+      <van-button size="large" type="primary" bindtap='confimInfo'>确认</van-button>
+    </view>
+  </view>
+ 
+</van-popup>
+ 
+<van-toast id="van-toast" />
+
+<import src="../../../template/passwordPanel.wxml"/>
+<van-action-sheet show="{{payShow }}" bind:close="closePay" title="请选择支付方式">
+  <template is="passwordPanel" data="{{paymoney: 100, balance: 200, passwordHidden: passwordHidden}}"/>
+</van-action-sheet>

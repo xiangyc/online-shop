@@ -1,0 +1,8 @@
+/* pages/account/login/login.wxss */
+.login-btn{padding:20px;}
+.mb10{margin-bottom:10px;}
+.wechat-login{text-align: center;color:#666;font-size:12px;padding:20px 0;}
+.wechat-login image{width:40px;height:40px;margin:10px auto 0;display:block;}
+.wechat-login text{position:relative;line-height:18px;display:block;text-align:center;}
+.wechat-login text::before{content:'';position:absolute;width:50px;height:1px;background:#ccc;left:20%;top:9px;}
+.wechat-login text::after{content:'';position:absolute;width:50px;height:1px;background:#ccc;right:20%;top:9px;}

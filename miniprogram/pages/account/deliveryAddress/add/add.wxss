@@ -1,0 +1,10 @@
+/* pages/account/deliveryAddress/add/add.wxss */
+page{font-family: 'PingFang SC';background:#f8f8f8;}
+image{width:100%;margin:0 auto;display:block;height:auto;}
+page .van-button--primary{color:#fff;background-color:#ffb11b;border:1px solid #ffb11b;}
+page .van-button--plain{background-color:transparent;}
+page .van-button--plain.van-button--primary{color:#ffb11b;}
+.add-address{border-bottom:0;padding:0 0 0 15px;background:#fff;}
+.add-address > view{border-bottom:1px solid #eee;}
+.add-address > view:last-child{border-bottom:0;}
+.add-address-btn{padding:0 15px;margin-top:10px;}

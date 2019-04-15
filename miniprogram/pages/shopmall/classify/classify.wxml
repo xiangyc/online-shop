@@ -1,0 +1,30 @@
+<van-search
+    value="{{value}}"
+    placeholder="请输入搜索关键词"
+    bind:tap="openSearchWin"
+/>
+
+<view class="classify">
+  <!--分类导航栏-->
+  <scroll-view class='left-navbar' scroll-y="true">
+    <van-badge-group active="{{active}}">
+      <block wx:for="{{classifyList}}" wx:key="idx"  wx:for-item="item">
+        <van-badge title="{{item.name}}" bindtap="onChange" data-id="{{item.id}}"/>
+      </block>
+    </van-badge-group>
+  </scroll-view>
+
+
+  <scroll-view id="right" class='con-right' scroll-y="true" scroll-top="{{scrollTop}}">
+    <view class='pro-classify-list'>
+    <van-row gutter="15" class="goods">
+      <van-col span='12' wx:for="{{classifySecondList}}" wx:key="idx" bindtap="ToGoodsList" data-id="{{item.id}}">
+          <image mode='widthFix' class="img" src="{{domain + item.imgurl}}"></image>
+          <text>{{item.name}}</text>
+      </van-col>
+    </van-row>
+    </view>
+  </scroll-view>
+ 
+</view>
+  

@@ -1,0 +1,2 @@
+<!--pages/account/custom/custom.wxml-->
+<web-view src="{{url}}"></web-view>

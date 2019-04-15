@@ -1,0 +1,49 @@
+<wxs module="filters" src="../../utils/timeUtil.wxs"></wxs>
+<view class='product'>
+  <view class='pro-list' wx:for="{{carts}}" wx:key="idx">
+    <view class='list-con' bindtap='goGoodsDetail' data-id="{{item.id}}">
+      <view class='list-checkbox'>
+        <van-checkbox value="{{item.isSelect == true?true:false}}" checked-color="#ffb11b" custom-class="shopcartList-checkbox" bind:change="onChange" catchtap="preventEvent" data-index="{{index}}" />
+      </view>
+      <view class='list-con-img'>
+        <image src='https://app.jsz.top/help/2017/3/20170330175416-9178.jpg'></image>
+      </view>
+      <view class='list-con-con'>
+        <view class='list-con-title'>{{item.name}}</view>
+        <view class='list-con-text'>{{item.summary}}</view>
+        <view class='list-con-num'>
+          <view class='list-con-price'>￥{{filters.toFix(item.salePrice)}}</view>
+          <view class='list-con-step'><van-stepper value="{{item.count}}" data-index="{{index}}" bind:minus="onCurtNum" bind:plus="onAddNum" bind:change="onChangeNum" catchtap="preventEvent"/></view>
+        </view>
+      </view>
+    </view>
+    <view class='pro-btn'>
+      <view slot="footer">
+        <van-button plain size="small" type="danger" bindtap='delGoods' data-id="{{item.id }}" data-index="{{index}}">删除</van-button>
+        <!-- <van-button plain size="small" type="danger" bindtap='toOrder' data-index="{{index}}" data-id="{{item.id }}" data-price="{{item.salePrice}}">去结算</van-button> -->
+      </view>
+    </view>
+  </view>
+</view>
+
+<van-submit-bar
+  price="{{totalMoney*100}}"
+  button-text="结算"
+  bind:submit="onClickButton"
+  tip="{{ false }}"
+  data-price="{{totalMoney}}"
+>
+  <van-checkbox value="{{isAllSelect == true?true:false}}" checked-color="#ffb11b" class="all-checkbox" bind:change="onChangeAll">
+    <van-tag type="primary">全选</van-tag>
+  </van-checkbox>
+  <!-- <view slot="tip">
+    您的收货地址不支持同城送, <text>修改地址</text>
+  </view> -->
+</van-submit-bar>
+
+<import src="../../template/passwordPanel.wxml"/>
+<van-action-sheet class='pay-box' show="{{payShow }}" bind:close="closePay" title="请选择支付方式">
+  <template is="passwordPanel" data="{{paymoney: totalPrice,orderTimeId: orderTimeId, balance: balance, passwordHidden: passwordHidden}}"/>
+</van-action-sheet>
+
+<van-toast id="van-toast" />

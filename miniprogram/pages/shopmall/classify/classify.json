@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-badge": "../../vant/badge/index",
+    "van-badge-group": "../../vant/badge-group/index",
+    "van-icon": "../../vant/icon/index",
+    "van-row": "../../vant/row/index",
+    "van-col": "../../vant/col/index",
+    "van-search": "../../vant/search/index"
+  },
+  "navigationBarTitleText": "分类"
+}

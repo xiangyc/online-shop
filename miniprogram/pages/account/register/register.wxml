@@ -1,0 +1,45 @@
+<van-cell-group>
+  <van-field
+    value="{{ username }}"
+    clearable
+    label="用户名"
+    placeholder="请输入用户名"
+    maxlength="11"
+    bind:input="usernameInput"
+  />
+  <van-field
+    center
+    clearable
+    label="短信验证码"
+    placeholder="请输入短信验证码"
+    border="{{ false }}"
+    use-button-slot
+    maxlength="6"
+    type="number"
+    bind:input="smsInput"
+  >
+    <van-button plain round slot="button" size="small"  bind:click="sendSms" type="primary">{{smsText}}</van-button>
+  </van-field>
+  <van-field
+    maxlength="10"
+    value="{{ password }}"
+    type="{{typeEye}}"
+    icon="{{iconEye}}"
+    label="密码"
+    data-type="{{typeEye}}"
+    bind:click-icon="onClickIcon"
+    placeholder="请输入密码"
+    bind:input="passwordInput"
+  />
+</van-cell-group>
+
+
+<view class='register-btn'>
+  <van-button round type='primary' size="large" bind:click="register">注册</van-button>
+</view>
+<view class='register-login'>
+  已有账号？<text bindtap='loginFun'>登录</text>
+</view>
+<view class='register-text'>
+  注册即视为已阅读同意<text>《财易通智金用户服务》</text>
+</view>

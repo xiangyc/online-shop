@@ -1,0 +1,22 @@
+<van-search
+  value="{{value}}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:change="onChange"
+  bind:search="onSearch"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+
+<scroll-view id="right" class='con-right' scroll-y="true">
+  <view class='pro-classify-list'>
+    <van-row gutter="10" class="goods">
+      <van-col span='12' wx:for="{{goodsList}}" wx:key="idx" bindtap="ToGoodsDetail" data-id="{{item.id}}">
+          <image mode='widthFix' class="img" src="{{domain + item.imgurl}}"></image>
+          <text>{{item.name}}</text>
+      </van-col>
+    </van-row>
+  </view>
+</scroll-view>
+
+<van-toast id="van-toast" />

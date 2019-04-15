@@ -1,0 +1,108 @@
+<import src="../../../wxParse/wxParse.wxml"/>
+<scroll-view wx:key="idx" bindtap="ToGoodsList" data-id="{{item.id}}" scroll-top="{{scrollTop}}">
+  <view class='images'>
+    <swiper class='detail-imgs' indicator-dots="{{true}}" autoplay='{{false}}' interval="{{5000}}" duration="{{500}}" circular="{{true}}" bindchange='bindchange' style="height:{{imgheights[current]}}rpx;">
+      <block wx:for="{{detailImg}}" wx:key="{{index}}">
+        <swiper-item style="">
+          <image mode="widthFix" style="height:{{imgheights[current]}}rpx;width:{{imgwidth}}rpx;" src="{{domain + '/' + item.path + '/' + item.fileName}}" class='image-view' bindload="imageLoad" data-src='{{item}}' data-index='{{index}}'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='pro-text' wx:key="{{index}}">
+    <view class='pro-text-title'>{{detailCon.name}}</view>
+    <view class='pro-text-con'>{{detailCon.summary}}</view>
+    <view class='pro-info'>
+      <view class='pro-price'>￥{{detailCon.salePrice}}</view>
+      <view class='pro-stock'>库存（<text>{{detailCon.amount}}</text>件）</view>
+    </view>
+    <view class='pro-qualification'>
+      <view><image src='https://app.jsz.top/image/goldShop/icon-pro-sf.png' mode='widthFix'></image>顺丰快递</view>
+      <view><image src='https://app.jsz.top/image/goldShop/icon-pro-safe.png' mode='widthFix'></image>正品保障</view>
+      <view><image src='https://app.jsz.top/image/goldShop/icon-pro-price.png' mode='widthFix'></image>收藏价值</view>
+    </view>
+  </view>
+  <view class='pro-material'>
+    <view>重量：{{detailCon.weight/1000}}克</view>
+    <view>材质：{{detailCon.material}}</view>
+    <view>直径：{{detailCon.size}}</view>
+  </view>
+  <view class='pro-detail'>
+    <view class='pro-detail-con'>
+      <view class='pro-detail-title'>图文详情</view>
+      <view class='pro-detail-pic'>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+    </view>
+    <view class='pro-detail-text'>
+      <view class='pro-detail-title'>购买须知</view>
+      <view class='pro-detail-text-list'>
+        <view class='pro-detail-text-list-title'>物流配送</view>
+        <view class='pro-detail-text-list-con'>本商品寄送选用国内一流的快递公司顺丰速运，并提供全额保价服务，请务必持本人身份证签收。</view>
+      </view>
+      <view class='pro-detail-text-list'>
+        <view class='pro-detail-text-list-title'>收货须知</view>
+        <view class='pro-detail-text-list-con'>请您在快递送达时务必检查商品外观，查看包装是否有拆封痕迹，如存在划痕、损坏等现象，请联系金算子客服热线：4006-832-999（9:00-19:00）。</view>
+      </view>
+      <view class='pro-detail-text-list'>
+        <view class='pro-detail-text-list-title'>退换货说明</view>
+        <view class='pro-detail-text-list-con'>本品系贵重物品，售出后非质量问题或非适用法律另有规定，不提供退换货服务。</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<van-goods-action>
+  <van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon" />
+  <van-goods-action-button type='default' text="加入购物车" bind:click="applyWin" />
+  <van-goods-action-button text="立即购买" bind:click="onClickButton" />
+</van-goods-action>
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  overlay="{{ true }}"
+  bind:close="onClose"
+>
+<view class='pro-popup-info'>
+  <view class='pro-popup-info-img'>
+    <image src='{{domain + "/" + detailImg[0].path + "/" + detailImg[0].fileName}}'></image>
+  </view>
+  <view class='pro-popup-info-text'>
+    <view class='pro-popup-info-text-title'>{{detailCon.name}}</view>
+    <view class='pro-popup-info-text-price'>￥{{detailCon.salePrice}}</view>
+    <view class='pro-popup-info-text-stock'>库存（<text>{{detailCon.amount}}</text>件）</view>
+  </view>
+</view>
+  <view class='pro-material pro-popup-material'>
+    <view>重量：<text>{{detailCon.weight/1000}}克</text></view>
+    <view>材质：<text>{{detailCon.material}}</text></view>
+    <view>直径：<text>{{detailCon.size}}</text></view>
+    <view>数量：<van-stepper value="{{ 1 }}" bind:change="onChangeNum" /></view>
+  </view>
+  <van-button size="large" type="primary" bindtap='numberSure'>确认</van-button>
+  
+</van-popup>
+<van-toast id="van-toast" />
+
+
+<van-popup
+  show="{{ showWin }}"
+  position="bottom"
+  overlay="{{ true }}"
+  bind:close="onClose"
+>
+<view class='pro-popup-info'>
+  <view class='pro-popup-info-img'>
+    <image src='{{domain + goodsData.imgurl}}' style='height:80px;'></image>
+  </view>
+  <view class='pro-popup-info-text'>
+    <view class='pro-popup-info-text-title'>{{goodsData.name}}</view>
+    <view class='pro-popup-info-text-price'>￥{{goodsData.salePrice}}</view>
+    <view class='pro-popup-info-text-stock'>库存（<text>{{goodsData.amount}}</text>件）</view>
+  </view>
+</view>
+  <view class='pro-material pro-popup-material'>
+    <view>数量：<van-stepper value="{{count}}" bind:change="onChangeNum" /></view>
+  </view>
+  <van-button size="large" type="primary" bindtap='numberSure' data-index="{{index}}">确认</van-button>
+  
+</van-popup>

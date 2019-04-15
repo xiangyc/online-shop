@@ -1,0 +1,68 @@
+/* pages/account/orderDetail/orderDetail.wxss */
+page{font-family: 'PingFang SC';background:#f8f8f8;font-size:14px;}
+image{width:100%;}
+view{overflow: hidden;}
+.text-red{color:#ff3b30!important;}
+page .van-button--primary{color:#fff;background-color:#ffb11b;border:1px solid #ffb11b;}
+page .van-button--plain{background-color:transparent;}
+page .van-button--plain.van-button--primary{color:#ffb11b;}
+
+.order-state{height: 60px;background: -webkit-linear-gradient(90deg, #ff6d10, #ff3b30);background: -o-linear-gradient(90deg, #ff6d10, #ff3b30);background: -moz-linear-gradient(90deg, #ff6d10, #ff3b30);background: linear-gradient(90deg, #ff6d10, #ff3b30);color: #fff;padding: 15px;}
+.order-state-title{height:30px;line-height:30px;padding-bottom:5px;}
+.order-state-title .order-state-icon{background:url(https://app.jsz.top/image/goldShop/icon-state.png) top left no-repeat;padding-left:40px;display:block;background-size:30px;font-size:16px;float:left;}
+/*
+待付款 payment
+已完成 completed
+已取消 cancel
+待发货 delivery
+待收货 received
+*/
+.order-state-icon.payment{background-position:0 0;}
+.order-state-icon.completed{background-position:0 -30px;}
+.order-state-icon.cancel{background-position:0 -60px;}
+.order-state-icon.delivery{background-position:0 -90px;}
+.order-state-icon.received{background-position:0 -120px;}
+.order-state-time{float:right;}
+.order-state-con{font-size:14px;}
+.order-state-arrow{padding:0;position:relative;width:14px;height:20px;}
+.icon-arrow{position:absolute;right:0;top:3px;color:#fff;width:14px;height:14px;line-height:14px;}
+
+.order-pro{background:#fff;margin-top:10px;padding:15px 15px 0;}
+.list-left{float:left;}
+.list-right{float:right;text-align:right;}
+.order-pro-info{padding-bottom:15px;border-bottom:1px solid #e8e8e8;}
+.order-pro-img{width:80px;height:80px;float:left;background:#eee;}
+.order-pro-img image{width:80px;}
+.order-pro-text-title{font-size:16px;height:20px;line-height:20px;overflow: hidden;text-overflow: ellipsis;display: block;width: auto;white-space: nowrap;}
+.order-pro-text{padding-left:10px;font-size:12px;color:#999;}
+.order-pro-text-material{height:40px;line-height:20px;}
+.order-pro-text-info,.order-pro-text-num{overflow:hidden;font-size:14px;color:#2d2d2d;}
+.order-pro-text-material-info text{padding-right:5px;}
+.order-pro-num{color:#2d2d2d;font-size:14px;}
+.order-pro-text-num{text-align: left;}
+.order-pro-text-tips{background:url(https://app.jsz.top/image/goldShop/icon-sigh-gray.png) left no-repeat;background-size:12px 12px;padding-left:15px;height:20px;line-height:20px;}
+.submit-order .van-submit-bar__bar--safe{padding-bottom:0;}
+.submit-order .van-button--danger{color:#fff;background-color:#ffb11b;border:1px solid #ffb11b;}
+.order-pro-btn {text-align: right;height: 40px;line-height: 40px;}
+.order-pro-btn text{background: url(https://app.jsz.top/image/goldShop/icon-service.png) no-repeat;background-size: 18px;padding-left: 25px;text-align: right;color: #0e88ea;}
+
+.order-info{background:#fff;margin-top:10px;padding:15px 15px 0;}
+.order-info-list,.order-other-list{line-height:32px;}
+.order-info-address{line-height:45px;}
+.order-info-address .list-right{font-size:12px;}
+.order-info-address-user{line-height:22px;padding-top:3px;}
+.order-info-address-name{padding-right:10px;}
+.order-info-address-con{display:block;line-height:20px;}
+.order-info-price{text-align:right;height:45px;line-height:45px;border-top:1px solid #e8e8e8;}
+.order-info-price .text-red{font-weight:bold;}
+
+
+.order-other{background:#fff;margin-top:10px;padding:15px;}
+.order-other-list-left{float:left;width:110px;}
+.order-other-list-right{float:left;}
+.order-other-copy{display:inline-block;color: #fff;background-color: #feb131;width: 40px;height: 20px;line-height: 20px;padding: 0;text-align: center;font-size: 12px;margin: 0 0 1px 5px;border-radius: 3px;}
+
+.order-btn{background:#fff;padding:10px 15px;margin-top:10px;text-align:right;}
+.order-btn view{display:inline-block;}
+.order-btn .van-button{margin-left:10px;height:30px;line-height:30px;}
+

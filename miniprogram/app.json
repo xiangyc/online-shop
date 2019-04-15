@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shopcart/shopcart",
+    "pages/account/main/main",
+    "pages/logs/logs",
+    "pages/shopmall/classify/classify",
+    "pages/shopmall/shopList/shopList",
+    "pages/shopmall/search/search",
+    "pages/shopmall/detail/detail",
+    "pages/account/order/order",
+    "pages/shopmall/defineOrder/defineOrder",
+    "pages/account/login/login",
+    "pages/account/register/register",
+    "pages/account/orderDetail/orderDetail",
+    "pages/account/deliveryAddress/list/list",
+    "pages/account/deliveryAddress/add/add",
+    "pages/account/deliveryAddress/selectAddress/selectAddress",
+    "pages/account/set/set",
+    "pages/account/custom/custom"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "电商",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#b5b5b5",
+    "selectedColor": "#ffb11b",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/ic_tab_index01.png",
+        "selectedIconPath": "images/ic_tab_index02.png"
+      },
+      {
+        "pagePath": "pages/shopmall/classify/classify",
+        "text": "分类",
+        "iconPath": "images/ic_tab_find01.png",
+        "selectedIconPath": "images/ic_tab_find02.png"
+      },
+      {
+        "pagePath": "pages/shopcart/shopcart",
+        "text": "购物车",
+        "iconPath": "images/ic_tab_pr01.png",
+        "selectedIconPath": "images/ic_tab_pr02.png"
+      },
+      {
+        "pagePath": "pages/account/main/main",
+        "text": "我的",
+        "iconPath": "images/ic_tab_my01.png",
+        "selectedIconPath": "images/ic_tab_my02.png"
+      }
+    ]
+  }
+}

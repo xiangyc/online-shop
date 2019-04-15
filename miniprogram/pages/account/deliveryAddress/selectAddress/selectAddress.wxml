@@ -1,0 +1,17 @@
+<view class='list'> 
+  <view class='list-con' wx:for="{{adressList}}" wx:key="idx" bindtap="chooseAddress" 
+  data-consignee="{{item.consignee}}" data-hideMobile="{{item.hideMobile}}" data-addressDetail="{{item.addressDetail}}"> 
+    <van-checkbox value="{{ checkbox }}" data-key="checkbox" checked-color="#ffb11b" custom-class="demo-checkbox" bind:change="onChange"> 
+        <view class='list-user'> 
+          <text class='list-name'>{{item.consignee}}</text> 
+          <text class='list-mobile'>{{item.hideMobile}}</text> 
+          <text class='list-tag'>默认</text> 
+        </view> 
+        <view class='list-address'>{{item.addressDetail}}</view> 
+    </van-checkbox> 
+  </view> 
+</view> 
+
+<view class='new-address-btn'> 
+  <van-button size='large' round type="primary" bind:tap="manageAdress">管理地址</van-button> 
+</view>
